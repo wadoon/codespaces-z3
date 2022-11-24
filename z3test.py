@@ -1,16 +1,16 @@
+#!/usr/bin/python3
+
 from z3 import *
 
-a, b, c = Ints("x y z")
-x, y, z = Bools("a b c")
-q = BitVec("q", 16)
+## Simple check-up of z3 installation
+x = Int('x')
+y = Int('y')
 s = Solver()
-expr = And(
-    Or([x, y, z]),
-    Or(x, And(y, z)),    
-    q > 5
-)
-print(expr.sexpr())
-
-bv_solver = Then('simplify', 'bit-blast', 'tseitin-cnf', 'simplify')
-
-print(bv_solver(expr))
+s.add(x > 10, y == x + 2)
+ans = s.check()
+if ans == sat:
+    m = s.model()
+    print(f"x = {m[x]}")
+    print(f"y = {m[y]}")
+else:
+    print(s.proof())
