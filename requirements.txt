@@ -1,2 +1,0 @@
-ipywidgets==7.7.1
-z3_solver
