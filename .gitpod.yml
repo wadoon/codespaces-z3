@@ -5,5 +5,6 @@ vscode:
   extensions:
     - almenon.arepl
     - littlefoxteam.vscode-python-test-adapter
-
-
+    - ms-python.python
+    - ms-toolsai.jupyter
+    - ms-toolsai.jupyter-keymap
